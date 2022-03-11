@@ -5,7 +5,7 @@ const initialState = {
   boolTrigger: false,
 };
 
-export default (state = initialState, action) => {
+const triggerReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_TRUE:
       return {
@@ -27,3 +27,5 @@ export const setTrigger = () => ({
 export const resetTrigger = () => ({
   type: SET_FALSE,
 });
+
+export default triggerReducer;

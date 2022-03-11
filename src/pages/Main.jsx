@@ -39,9 +39,10 @@ export default function Main() {
   const auth = useSelector(state => state.auth.authenticated);
 
   useEffect(() => {
+    console.log("Main Page Loaded");
     console.log("Auth : " + auth);
     if (!auth) navigate("/");
-  }, [auth]);
+  }, [auth, navigate]);
 
   return (
     <>
@@ -97,7 +98,7 @@ export default function Main() {
                   open={Boolean(anchorEl)}
                   onClose={handleClose}
                 >
-                  <MenuItem onClick={handleClose}>Profile</MenuItem>
+                  {/* <MenuItem onClick={handleClose}>Profile</MenuItem> */}
                   <MenuItem onClick={logout}>Log Out</MenuItem>
                 </Menu>
               </Grid>

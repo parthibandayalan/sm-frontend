@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
   Paper,
   Grid,
@@ -30,7 +30,6 @@ const useStyles = makeStyles(theme => ({
     width: "300px",
     align: "center",
     display: "block",
-    align: "center",
     padding: theme.spacing(2, 2),
     margin: theme.spacing(8, 2),
   },

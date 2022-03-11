@@ -42,8 +42,10 @@ export default function LoginPage() {
   const auth = useSelector(state => state.auth.authenticated);
 
   useEffect(() => {
-    if (auth) navigate("/home");
-  }, [auth]);
+    if (auth) {
+      navigate("/home");
+    }
+  }, [auth, navigate]);
 
   return (
     <div className={classes.centerDiv}>

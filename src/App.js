@@ -2,7 +2,7 @@ import "./App.css";
 import Main from "./pages/Main.jsx";
 import LoginPage from "./pages/LoginPage";
 import Register from "./pages/Register";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import RequireAuth from "./components/RequireAuth";
 import NewsFeed from "./pages/NewsFeed";
 import CreatePost from "./pages/CreatePost";

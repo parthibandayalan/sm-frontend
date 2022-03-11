@@ -1,5 +1,5 @@
 export const LOGIN_USER = "LOGIN_USER";
-export const LOGOUT_USER = "REFRESH_TOKEN";
+export const LOGOUT_USER = "LOGOUT_TOKEN";
 export const REFRESH_TOKEN = "REFRESH_TOKEN";
 const SET_AUTHENTICATED = "SET_AUTHENTICATED";
 
@@ -8,13 +8,19 @@ export const loginUser = data => ({
   payload: data,
 });
 
-export const logoutUser = () => ({
-  type: LOGOUT_USER,
-});
+export const logoutUser = () => {
+  console.log("Log out Action Initiated");
+  return {
+    type: LOGOUT_USER,
+  };
+};
 
-export const refreshToken = () => ({
-  type: REFRESH_TOKEN,
-});
+export const refreshToken = () => {
+  console.log("Refresh Token Action Initiated");
+  return {
+    type: REFRESH_TOKEN,
+  };
+};
 
 export const setAuthenticated = (authenticated, username, name) => ({
   type: SET_AUTHENTICATED,
@@ -29,7 +35,7 @@ const initialState = {
   name: null,
 };
 
-export default (state = initialState, action) => {
+const reducerAuth = (state = initialState, action) => {
   switch (action.type) {
     case SET_AUTHENTICATED:
       const { authenticated, username, name } = action;
@@ -38,3 +44,5 @@ export default (state = initialState, action) => {
       return state;
   }
 };
+
+export default reducerAuth;

@@ -13,7 +13,7 @@ export function* handleLoginUser(action) {
     console.log("login user action called");
     const response = yield call(authenticationUser, action.payload);
 
-    if (response.status !== 200) throw "Login Failed";
+    if (response.status !== 200) throw Error("Login Failed");
 
     yield put(
       setAuthenticated(true, response.data.username, response.data.name)
@@ -52,7 +52,7 @@ export function* handleLogoutUser(action) {
     console.log("Handle Log Out ");
     yield put(setAuthenticated(false, null, null));
     const response = yield call(cancelToken);
-    if (response.status === 200) throw "Log Out Failed";
+    if (response.status === 200) throw Error("Log Out Failed");
     yield put(setSnackbar(true, "success", "Log Out Successful"));
   } catch (error) {
     console.log();

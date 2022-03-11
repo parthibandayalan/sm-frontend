@@ -6,7 +6,7 @@ const initialState = {
   snackbarMessage: "",
 };
 
-export default (state = initialState, action) => {
+const reducerSnackbar = (state = initialState, action) => {
   switch (action.type) {
     case SET_SNACKBAR:
       const { snackbarOpen, snackbarMessage, snackbarType } = action;
@@ -32,3 +32,5 @@ export const setSnackbar = (
   snackbarType,
   snackbarMessage,
 });
+
+export default reducerSnackbar;

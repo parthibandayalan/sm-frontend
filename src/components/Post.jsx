@@ -15,7 +15,7 @@ import { deleteById } from "../services/PostService";
 import { useDispatch } from "react-redux";
 import { setSnackbar } from "../redux/ducks/Snackbar";
 import { setTrigger } from "../redux/ducks/Trigger";
-import { Navigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   cardStyle: {

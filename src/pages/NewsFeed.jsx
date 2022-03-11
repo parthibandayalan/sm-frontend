@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { Grid } from "@material-ui/core";
 import CreatePost from "../components/CreatePost";
 import { getAllPost } from "../services/PostService";
@@ -12,19 +12,21 @@ export default function NewsFeed() {
   const [postList, setPostLists] = useState([]);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const stableDispatch = useCallback(dispatch, [dispatch]);
 
   const reload = useSelector(state => state.trigger.boolTrigger);
   const username = useSelector(state => state.auth.username);
 
   useEffect(() => {
+    console.log("NewFeed Page Loaded");
     getAllPost()
       .then(res => setPostLists(res))
       .catch(res => {
         console.log(res);
         navigate("/error");
       });
-    dispatch(resetTrigger());
-  }, [postList.length, reload]);
+    stableDispatch(resetTrigger());
+  }, [postList.length, reload, navigate, stableDispatch]);
 
   return (
     <div>

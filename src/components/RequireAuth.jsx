@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Route, Navigate, useLocation, Outlet } from "react-router-dom";
+import React from "react";
+import { Navigate, Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const useAuth = () => {

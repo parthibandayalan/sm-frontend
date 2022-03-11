@@ -10,14 +10,13 @@ import {
   DialogTitle,
   Button,
 } from "@material-ui/core";
-import { useNavigate } from "react-router-dom";
 
 export default function IdleTimerDialog() {
   const [open, setOpen] = useState(false);
   const idleTimerRef = useRef(null);
   const sessionTimeoutRef = useRef(null);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  //   const classes = useStyles();
 
   const isLoggedIn = useSelector(state => state.auth.authenticated);
 
@@ -26,17 +25,11 @@ export default function IdleTimerDialog() {
     setOpen(true);
     sessionTimeoutRef.current = setTimeout(logOut, 60 * 1000);
   };
-  const handleClose = () => {
-    console.log("Handle Close");
-    if (isLoggedIn) {
-      dispatch(refreshToken());
-      clearTimeout(sessionTimeoutRef.current);
-    }
-  };
 
   const logOut = () => {
     setOpen(false);
     dispatch(logoutUser());
+    // setIsLoggedIn(false);
     clearTimeout(sessionTimeoutRef.current);
     console.log("User has been logged out");
   };
@@ -50,9 +43,9 @@ export default function IdleTimerDialog() {
   return (
     <div>
       {isLoggedIn && (
-        <IdleTimer ref={idleTimerRef} timeout={1000 * 5} onIdle={onIdle} />
+        <IdleTimer ref={idleTimerRef} timeout={1000 * 10} onIdle={onIdle} />
       )}
-      <Dialog open={open} onClose={() => handleClose()}>
+      <Dialog open={open} onClose={stayActive}>
         <DialogTitle id="alert-dialog-title">
           {"You've been idle for a while!"}
         </DialogTitle>
@@ -62,10 +55,10 @@ export default function IdleTimerDialog() {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => logOut()} color="primary">
+          <Button onClick={logOut} color="primary">
             Log Out
           </Button>
-          <Button onClick={() => stayActive()} color="primary" autoFocus>
+          <Button onClick={stayActive} color="primary" autoFocus>
             Stay Active
           </Button>
         </DialogActions>

@@ -9,6 +9,7 @@ import CreatePost from "./pages/CreatePost";
 import Snackbar from "./components/CustomizedSnackBar";
 import Error from "./pages/Error";
 import NewsFeedUser from "./pages/NewsFeedUser";
+import WrapperLayout from "./pages/WrapperLayout";
 
 function App() {
   return (
@@ -16,16 +17,24 @@ function App() {
       <Snackbar />
       <Router>
         <Routes>
-          <Route path="/" element={<LoginPage />} />
-          <Route path="/register" element={<Register />} />
-          <Route element={<RequireAuth />}>
-            <Route path="/home" element={<Main />}>
-              <Route path="/home" element={<NewsFeed />} />
-              <Route path="/home/addpost" element={<CreatePost />} />
-              <Route path="/home/user" element={<NewsFeedUser />} />
+          <Route path="/sm-frontend" element={<WrapperLayout />}>
+            <Route path="/sm-frontend" element={<LoginPage />} />
+            <Route path="/sm-frontend/register" element={<Register />} />
+            <Route element={<RequireAuth />}>
+              <Route path="/sm-frontend/home" element={<Main />}>
+                <Route path="/sm-frontend/home" element={<NewsFeed />} />
+                <Route
+                  path="/sm-frontend/home/addpost"
+                  element={<CreatePost />}
+                />
+                <Route
+                  path="/sm-frontend/home/user"
+                  element={<NewsFeedUser />}
+                />
+              </Route>
             </Route>
+            <Route path="/sm-frontend/error" element={<Error />} />
           </Route>
-          <Route path="/error" element={<Error />} />
         </Routes>
       </Router>
     </div>
